@@ -1,0 +1,7 @@
+@mixin transitonFunc ($second, $moveing) {
+    -webkit-transition: all $second $moveing;
+    -moz-transition: all $second $moveing;
+    -o-transition: all $second $moveing;
+    transition: all $second $moveing;
+
+}

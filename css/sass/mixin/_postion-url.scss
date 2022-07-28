@@ -1,0 +1,8 @@
+@mixin postionUrl($top, $left ,$right, $postion, $url) {
+  position: $postion;
+  content: $url;
+  left: $left;
+  top: $top;
+  right: $right;
+
+}

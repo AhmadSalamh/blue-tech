@@ -1,0 +1,501 @@
+/* mixin input-placeholder */
+@mixin input-placeholder {
+  &:placeholder {
+    @content;
+  }
+  &:-moz-placeholder {
+    @content;
+  }
+  &:-ms-input-placeholder {
+    @content;
+  }
+  &:-webkit-input-placeholder {
+    @content;
+  }
+}
+/*---------------------*/
+/* minxin -uppearance */
+@mixin appearance($val: none) {
+  -webkit-appearance: $val;
+  -moz-appearance: $val;
+  appearance: $val;
+}
+/*-----------------------*/
+
+/* minxin -pseudo element */
+@mixin pseudo($display: block, $pos: absolute, $content: "") {
+  content: $content;
+  display: $display;
+  position: $pos;
+}
+
+/*-----------------------*/
+
+/* minxin truncateText  */
+@mixin truncateText($truncation-boundary) {
+  max-width: $truncation-boundary;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+/*-----------------------*/
+
+/* minxin center-block-element  */
+@mixin center-block {
+  display: block;
+  -webkit-margin-inline: auto;
+  margin-inline: auto;
+}
+/*-----------------------*/
+
+@mixin prefix($property, $value, $prefixes: ()) {
+  @each $prefix in $prefixes {
+    -#{$prefix}-#{$property}: $value;
+  }
+  #{$property}: $value;
+}
+/*-----------------------*/
+
+/// Horizontally and vertically centers block elements
+@mixin center-both {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  @include prefix(transform, translate(-50%, -50%), "webkit" "ms");
+}
+
+/*-----------------*/
+
+/*mixin for change backgorund selected of text the */
+
+@mixin selection {
+  ::-moz-selection {
+    @content;
+  }
+  ::selection {
+    @content;
+  }
+}
+/*----------------*/
+
+/* Vertically centers block elements with known height. */
+@mixin center-h($height) {
+  position: absolute;
+  top: 50%;
+  height: $height;
+  margin-top: -($height / 2);
+}
+
+/*-------------------*/
+
+/* mixin text-shadow */
+@mixin text-shadow($value) {
+  text-shadow: rgba(255, 255, 255, $value) 0 1px 0;
+}
+
+/*-------------------*/
+
+/* mixin fonts        */
+@mixin fonts($fontFamily, $fontSize) {
+  font-family: $fontFamily;
+  font-size: $fontSize;
+}
+/*-------------------*/
+
+/* mixin box-shadow */
+@mixin boxShadow($x, $y, $blur, $spread, $color) {
+  -webkit-box-shadow: $x $y $blur $spread $color;
+  -moz-box-shadow: $x $y $blur $spread $color;
+  -o-box-shadow: $x $y $blur $spread $color;
+  box-shadow: $x $y $blur $spread $color;
+}
+/*--------------------*/
+
+/* mixin button */
+
+@mixin buttonstyle(
+  $display,
+  $width,
+  $hight,
+  $color,
+  $bg,
+  $border-raduis,
+  $font-size
+) {
+  display: $display;
+  width: $width;
+  height: $hight;
+  @include prefix(transition, 0.5s ease, webkit moz o);
+  border-radius: $border-raduis;
+  color: $color;
+  background-color: $bg;
+  font-size: $font-size;
+  text-align: center;
+  cursor: pointer;
+}
+/*-------------------*/
+
+// mixin flex-box
+@mixin flex($hcenter: center, $vcenter: center, $wrap: wrap) {
+  display: flex;
+  justify-content: $hcenter;
+  align-items: $vcenter;
+  flex-wrap: $wrap;
+}
+/*-------------------*/
+
+// Hide only visually, but have it available for screenreaders
+@mixin vh($focusable: false) {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  @if $focusable {
+    @include vh-focusable;
+  }
+}
+
+/*------------------- */
+
+// Allow the element to be focusable when navigated to via the keyboard
+@mixin vh-focusable {
+  &:hover,
+  &:focus {
+    clip: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    position: static;
+    width: auto;
+  }
+}
+/*------------------- */
+
+/*Start Media Mixins*/
+
+@mixin xLarge {
+  @media (min-width: 1200px) and (max-width: 1399.98px) {
+    @content;
+  }
+}
+
+@mixin maxLarge {
+  @media (max-width: 1199.98px) {
+    @content;
+  }
+}
+
+@mixin large {
+  @media (min-width: 992px) and (max-width: 1199.98px) {
+    @content;
+  }
+}
+@mixin max_large {
+  @media (max-width: 991.98px) {
+    @content;
+  }
+}
+
+@mixin medium {
+  @media (min-width: 768px) and (max-width: 991.98px) {
+    @content;
+  }
+}
+@mixin small_to_medium {
+  @media (min-width: 576px) and (max-width: 991.98px) {
+    @content;
+  }
+}
+
+@mixin min_small {
+  @media (min-width: 568px) {
+    @content;
+  }
+}
+@mixin min_medium {
+  @media (min-width: 767.98px) {
+    @content;
+  }
+}
+@mixin min_large {
+  @media (min-width: 992px) {
+    @content;
+  }
+}
+@mixin min_xlarge {
+  @media (min-width: 1200px) {
+    @content;
+  }
+}
+@mixin small_medium {
+  @media (max-width: 767.98px) {
+    @content;
+  }
+}
+@mixin small {
+  @media (min-width: 576px) and (max-width: 767.98px) {
+    @content;
+  }
+}
+
+@mixin xSmall {
+  @media (max-width: 575.98px) {
+    @content;
+  }
+}
+
+@mixin xxSmall {
+  @media (max-width: 410px) {
+    @content;
+  }
+}
+
+@mixin smallest {
+  @media (max-width: 332px) {
+    @content;
+  }
+}
+
+/*End Media Mixins*/
+
+@mixin fluid-font($min-width, $max-width, $min-font-size, $max-font-size) {
+  $unit1: unit($min-width);
+  $unit2: unit($max-width);
+  $unit3: unit($min-font-size);
+  $unit4: unit($max-font-size);
+  @if $unit1 == $unit2 and $unit1 == $unit3 and $unit1 == $unit4 {
+    & {
+      font-size: $min-font-size;
+      line-height: $min-font-size * 1.618;
+      @media screen and (min-width: $min-width) {
+        font-size: calc(
+          #{$min-font-size} + #{strip-unit($max-font-size - $min-font-size)} *
+            ((100vw - #{$min-width}) / #{strip-unit($max-width - $min-width)})
+        );
+        line-height: calc(
+          #{$min-font-size} + #{strip-unit($max-font-size - $min-font-size)} *
+            1.618 *
+            ((100vw - #{$min-width}) / #{strip-unit($max-width - $min-width)})
+        );
+      }
+      @media screen and (min-width: $max-width) {
+        font-size: $max-font-size;
+        line-height: $max-font-size * 1.618;
+      }
+    }
+  }
+}
+
+// This mixin is a time saver and simple for writing beautiful media queries. Name your breakpoints, so they are understood by all team members.
+// You can use pixel values, but we have some default breakpoints setup that works great.
+// Example of usage
+// h1 {
+// font-size: 14px;
+// line-height: 22px;
+// @include respond-above(md) {
+// font-size: 18px;
+// line-height: 26px;
+// font-weight: 600;
+// }
+
+$breakpoints: (
+  "xs": 25em,
+  // 400px
+  "sm": 34em,
+  // 544px
+  "md": 48em,
+  // 768px
+  "lg": 60em,
+  // 960px
+  "xl": 80em,
+  // 1280px
+  "xxl": 90em // 1440px,,,,,,,,
+);
+
+@mixin respond-above($breakpoint) {
+  // If the breakpoint exists in the map.
+  @if map-has-key($breakpoints, $breakpoint) {
+    // Get the breakpoint value.
+    $breakpoint-value: map-get($breakpoints, $breakpoint);
+    // Write the media query.
+    @media (min-width: $breakpoint-value) {
+      @content;
+    }
+    // If the breakpoint doesn't exist in the map.
+  } @else {
+    // Log a warning.
+    @warn 'Invalid breakpoint: #{$breakpoint}.';
+  }
+}
+
+@mixin position(
+  $position: null,
+  $top: null,
+  $right: null,
+  $bottom: null,
+  $left: null,
+  $z-index: initial
+) {
+  position: $position;
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+  z-index: $z-index;
+}
+
+/* SCSS */
+//.FONT-FACE RULE
+// nclude font-face("My Font", my-font);
+@mixin font-face($name, $file) {
+  @font-face {
+    font-family: "#{$name}";
+    src: url("../fonts/#{$file}.eot");
+    src: url("../fonts/#{$file}.eot?#iefix") format("embedded-opentype"),
+      url("../fonts/#{$file}.woff") format("woff"),
+      url("../fonts/#{$file}.ttf") format("truetype"),
+      url("../fonts/#{$file}.svg?#webfont") format("svg");
+  }
+}
+
+// 7. ARROW WITH FOUR OPTIONAL DIRECTIONS
+@mixin arrow($direction: down, $size: 5px, $color: #555) {
+  @if ($direction == left) {
+    border-bottom: $size solid transparent;
+    border-right: $size solid $color;
+  } @else if ($direction == right) {
+    border-bottom: $size solid transparent;
+    border-left: $size solid $color;
+  } @else if ($direction == down) {
+    border-left: $size solid transparent;
+    border-right: $size solid transparent;
+    border-top: $size solid $color;
+  } @else {
+    border-left: $size solid transparent;
+    border-right: $size solid transparent;
+    border-bottom: $size solid $color;
+  }
+}
+
+@mixin box($width, $height: $width) {
+  width: $width;
+  height: $height;
+}
+
+/* ===== Usage ===== */
+// div {
+//   // You can pass width && height
+//   @include box(200px, 300px);
+//   /* or just pass width and the height
+//      will default to the width value */
+//   @include box(200px);
+// }
+// /*---------------------------------*/
+
+// 3. Font Size
+// This is one of my favorites because it
+// keeps the code cleaner by shaving 2 lines off from multiple places.
+// It sets font-size, line-height
+// and letter-spacing in one go and defaults to normal for
+// line-height and letter-spacing. It also keeps line-height unitless which I like.
+// You could adapt these mixins according to the type of units you work
+// with, for example, you could make this work with a rem based font system.
+@mixin font-size($font-size, $line-height: normal, $letter-spacing: normal) {
+  font-size: $font-size * 1px;
+  // font-size: $font-size * 0.1rem;
+  // example using rem values and 62.5% font-size so 1rem = 10px
+  @if $line-height==normal {
+    line-height: normal;
+  } @else {
+    line-height: $line-height / $font-size;
+  }
+  @if $letter-spacing==normal {
+    letter-spacing: normal;
+  } @else {
+    letter-spacing: #{$letter-spacing / $font-size}em;
+  }
+}
+/* ===== Usage ===== */
+// p {
+//   @include font-size(12, 18, 1.2);
+//   // returns
+//   font-size: 12px;
+//   line-height: 1.5; // 18 / 12
+//   letter-spacing: 0.1em;
+// }
+// /*--------------------------------------------*/
+
+// 6. Pseudo
+// This is a mixin that I use a lot for image masking but the idea is mostly to
+// reduce lines since there is a lot of repetition when doing pseudo-elements;
+@mixin pseudo(
+  $width: 100%,
+  $height: 100%,
+  $display: inline-block,
+  $pos: absolute,
+  $content: ""
+) {
+  content: $content;
+  display: $display;
+  position: $pos;
+  @include box($width, $height);
+}
+
+/* ===== Usage ===== */
+// div {
+//   position: relative;
+//   width: 200px;
+//   height: 200px;
+
+//   &:after {
+//     @include pseudo(100px, 100px);
+//   }
+// }
+
+// 9. Visibility
+// Quick mixin to hide or show an element, useful for fade in/out animations
+
+@mixin fade($type) {
+  @if $type== "hide" {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 1s, opacity 1s;
+  } @else if $type== "show" {
+    visibility: visible;
+    opacity: 1;
+    transition: visibility 1s, opacity 1s;
+  }
+}
+
+// 10. Background Transition
+// This one is more of a fun mixin, not highly reusable but I
+// like this transition in buttons and is a way to
+//  show the power of mixins and encourage you to build your own and go a bit wild.
+@mixin skew-background-transition($initial, $hover, $inverted: false) {
+  background: linear-gradient(
+    90deg,
+    $hover 0%,
+    $hover 50%,
+    $initial 50%,
+    $initial 100%
+  );
+  background-repeat: no-repeat;
+  background-size: 200% 100%;
+
+  background-position: right bottom;
+  @if $inverted {
+    background-position: left bottom;
+  }
+  transition: background-position 0.25s ease-out;
+
+  &:hover {
+    background-position: left bottom;
+    @if $inverted {
+      background-position: right bottom;
+    }
+  }
+}

@@ -1,0 +1,64 @@
+*,
+*::before,
+*::after {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+:any-link {
+  color: #fff;
+  text-decoration: none;
+  text-underline-offset: 0.05em;
+  outline: none;
+  &:focus {
+    outline: none;
+  }
+  &:hover {
+    color: #fff;
+    text-decoration: none;
+  }
+}
+body {
+  font-family: "Poppins", sans-serif, system-ui;
+  overflow-x: hidden;
+}
+html {
+  scroll-behavior: smooth;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-bottom: 0;
+}
+ul {
+  margin-bottom: 0;
+  list-style: none;
+}
+
+button,
+input,
+select,
+textarea {
+  border: none;
+  outline: none;
+  &:focus {
+    border: none;
+    outline: none;
+  }
+}
+input[type="file"] {
+  font-size: 0;
+  cursor: pointer;
+}
+.btn {
+  &:focus {
+    box-shadow: unset;
+    outline: unset;
+  }
+}

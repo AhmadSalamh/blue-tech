@@ -1,0 +1,6 @@
+@mixin elementCenter ($top, $left, $position,$x,$y) {
+    position: $position;
+    top: $top;
+    left: $left;
+    transform: translate($x,$y);
+}

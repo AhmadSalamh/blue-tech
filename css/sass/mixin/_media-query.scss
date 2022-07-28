@@ -1,0 +1,38 @@
+@mixin Xlarg-1200 {
+    @media (min-width:1200px) {
+        @content
+    }
+}
+
+;
+
+
+@mixin larg-992-1199 {
+    @media (min-width:992px) and (max-width:1199.98px) {
+        @content
+    }
+}
+
+;
+
+@mixin meduim-768-991 {
+    @media (min-width:768px) and (max-width:991.98px) {
+        @content
+    }
+}
+
+;
+
+@mixin small-576-767 {
+    @media (min-width:576px) and (max-width:767.98px) {
+        @content
+    }
+}
+
+;
+
+@mixin Xsmall-575 {
+    @media (max-width:575.98px) {
+        @content
+    }
+}

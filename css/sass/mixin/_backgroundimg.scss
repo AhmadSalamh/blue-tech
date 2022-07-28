@@ -1,0 +1,4 @@
+@mixin backgrooundImg ($url,$cover) {
+    background-image:$url;
+    background-size:$cover
+}

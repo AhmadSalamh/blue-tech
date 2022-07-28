@@ -1,0 +1,10 @@
+@mixin textAbsolute ($top,$left,$position,$color,$fontFamily,$fontSize) {
+    top: $top;
+    left: $left;
+    position: $position;
+    color: $color;
+    font: {
+        size: $fontSize;
+        family:$fontFamily;
+    }
+}
